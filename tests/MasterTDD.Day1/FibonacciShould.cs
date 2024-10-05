@@ -76,14 +76,14 @@ namespace MasterTDD.Day1
         [Fact]
         public void Return_Return2584_When_Given18()
         {
-            int result = Calculator.Fibonacci(9);
-            result.Should().Be(34);
+            int result = Calculator.Fibonacci(18);
+            result.Should().Be(2584);
         }
         [Fact]
         public void Return_Return4181_When_Given19()
         {
-            int result = Calculator.Fibonacci(9);
-            result.Should().Be(34);
+            int result = Calculator.Fibonacci(19);
+            result.Should().Be(4181);
         }
     }
 
