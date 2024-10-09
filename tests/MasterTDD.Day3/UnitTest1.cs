@@ -11,6 +11,7 @@ namespace MasterTDD.Day3
         [InlineData(200, 100, 100)]
         [InlineData(150, 100, 50)]
         [InlineData(120, 100, 20)]
+        [InlineData(105, 100, 5)]
         public void CalculateChange(decimal totalPaid, decimal totalCost, params int[] expectedChange)
         {
             var change = ChangeCalculator.CalculateChange(totalPaid, totalCost);
@@ -20,7 +21,7 @@ namespace MasterTDD.Day3
 
     internal class ChangeCalculator
     {
-        private static readonly int[] _validChange = [100, 50, 20];
+        private static readonly int[] _validChange = [100, 50, 20, 5];
         internal static int[] CalculateChange(decimal totalPaid, decimal totalCost)
         {
             List<int> result = new List<int>();
