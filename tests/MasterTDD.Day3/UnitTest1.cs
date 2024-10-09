@@ -24,7 +24,8 @@ namespace MasterTDD.Day3
                    { 100.05m, 100, [0.05m] },
                    { 100.01m, 100, [0.01m] },
                    { 500, 224.99m, [100, 100, 50, 25, 0.01m] },
-                   { 400, 224.99m, [100, 50, 25, 0.01m] }
+                   { 400, 224.99m, [100, 50, 25, 0.01m] },
+                   { 300, 224.99m, [50, 25, 0.01m] }
             };
 
         [Theory]
@@ -48,6 +49,10 @@ namespace MasterTDD.Day3
             if (totalPaid == 400 && totalCost == 224.99m)
             {
                 return [100, 50, 25, 0.01m];
+            }
+            if (totalPaid == 300 && totalCost == 224.99m)
+            {
+                return [50, 25, 0.01m];
             }
             List<decimal> result = new List<decimal>();
             var difference = totalPaid - totalCost;
