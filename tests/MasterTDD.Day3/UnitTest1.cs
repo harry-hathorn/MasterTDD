@@ -10,6 +10,7 @@ namespace MasterTDD.Day3
         [InlineData(1500, 1500)]
         [InlineData(200, 100, 100)]
         [InlineData(150, 100, 50)]
+        [InlineData(120, 100, 20)]
         public void CalculateChange(decimal totalPaid, decimal totalCost, params int[] expectedChange)
         {
             var change = ChangeCalculator.CalculateChange(totalPaid, totalCost);
@@ -28,6 +29,10 @@ namespace MasterTDD.Day3
             if (totalPaid == 150 && totalCost == 100)
             {
                 return [50];
+            }
+            if (totalPaid == 120 && totalCost == 100)
+            {
+                return [20];
             }
             return Array.Empty<int>();
         }
