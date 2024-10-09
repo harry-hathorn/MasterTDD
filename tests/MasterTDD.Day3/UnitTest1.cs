@@ -21,7 +21,8 @@ namespace MasterTDD.Day3
                    { 100.5m, 100, [0.5m] },
                    { 100.25m, 100, [0.25m] },
                    { 100.10m, 100, [0.10m] },
-                   { 100.05m, 100, [0.05m] }
+                   { 100.05m, 100, [0.05m] },
+                   { 100.01m, 100, [0.01m] }
             };
 
         [Theory]
@@ -35,7 +36,7 @@ namespace MasterTDD.Day3
 
     internal class ChangeCalculator
     {
-        private static readonly decimal[] _validChange = [100, 50, 20, 5, 1, 0.5m, 0.25m, 0.10m, 0.05m];
+        private static readonly decimal[] _validChange = [100, 50, 20, 5, 1, 0.5m, 0.25m, 0.10m, 0.05m, 0.01m];
         internal static decimal[] CalculateChange(decimal totalPaid, decimal totalCost)
         {
             List<decimal> result = new List<decimal>();
