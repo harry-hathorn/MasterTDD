@@ -5,27 +5,19 @@ namespace MasterTDD.Day3
     public class GetChangeShould
     {
         [Theory]
-        [InlineData(100)]
-        [InlineData(50)]
-        [InlineData(20)]
-        [InlineData(10)]
-        [InlineData(5)]
-        [InlineData(1)]
-        [InlineData(0.5)]
-        [InlineData(0.25)]
-        [InlineData(0.10)]
-        [InlineData(0.05)]
-        [InlineData(0.01)]
-        public void CalculateChange(decimal input, params int[] expectedChange)
+        [InlineData(100, 100)]
+        [InlineData(200, 200)]
+        [InlineData(1500, 1500)]
+        public void CalculateChange(decimal totalPaid, decimal totalCost, params int[] expectedChange)
         {
-            int[] change = ChangeCalculator.CalculateChange(input);
+            var change = ChangeCalculator.CalculateChange(totalPaid, totalCost);
             change.Should().BeEquivalentTo(expectedChange);
         }
     }
 
     internal class ChangeCalculator
     {
-        internal static int[] CalculateChange(decimal input)
+        internal static int[] CalculateChange(decimal totalPaid, decimal totalCost)
         {
             return Array.Empty<int>();
         }
