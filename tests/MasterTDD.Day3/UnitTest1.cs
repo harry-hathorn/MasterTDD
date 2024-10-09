@@ -23,9 +23,9 @@ namespace MasterTDD.Day3
                    { 100.10m, 100, [0.10m] },
                    { 100.05m, 100, [0.05m] },
                    { 100.01m, 100, [0.01m] },
-                   { 500, 224.99m, [100, 100, 50, 25, 0.01m] },
-                   { 400, 224.99m, [100, 50, 25, 0.01m] },
-                   { 300, 224.99m, [50, 25, 0.01m] }
+                   { 500, 224.99m, [100, 100, 50, 20, 5 , 0.01m] },
+                   { 400, 224.99m, [100, 50, 20, 5, 0.01m] },
+                   { 300, 224.99m, [50,  20, 5, 0.01m] }
             };
 
         [Theory]
@@ -42,25 +42,20 @@ namespace MasterTDD.Day3
         private static readonly decimal[] _validChange = [100, 50, 20, 5, 1, 0.5m, 0.25m, 0.10m, 0.05m, 0.01m];
         internal static decimal[] CalculateChange(decimal totalPaid, decimal totalCost)
         {
-            if (totalPaid == 500 && totalCost == 224.99m)
-            {
-                return [100, 100, 50, 25, 0.01m];
-            }
-            if (totalPaid == 400 && totalCost == 224.99m)
-            {
-                return [100, 50, 25, 0.01m];
-            }
-            if (totalPaid == 300 && totalCost == 224.99m)
-            {
-                return [50, 25, 0.01m];
-            }
             List<decimal> result = new List<decimal>();
             var difference = totalPaid - totalCost;
-            var change = _validChange.FirstOrDefault(x => x == difference);
-            if (change > 0)
+            var changePaid = difference;
+
+            while (changePaid > 0)
             {
-                result.Add(change);
+                var change = _validChange.FirstOrDefault(x => x <= changePaid);
+                if (change > 0)
+                {
+                    changePaid -= change;
+                    result.Add(change);
+                }
             }
+
             return result.ToArray();
         }
     }
