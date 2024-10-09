@@ -13,9 +13,9 @@ namespace MasterTDD.Day3
                    { 200, 100, [100] },
                    { 150, 100, [50] },
                    { 120, 100, [20] },
+                   { 110, 100, [10] },
                    { 105, 100, [5] },
                    { 101, 100, [1] },
-                   { 120, 100, [20] },
                    { 105, 100, [5] },
                    { 101, 100, [1] },
                    { 100.5m, 100, [0.5m] },
@@ -39,7 +39,7 @@ namespace MasterTDD.Day3
 
     internal class ChangeCalculator
     {
-        private static readonly decimal[] _validChange = [100, 50, 20, 5, 1, 0.5m, 0.25m, 0.10m, 0.05m, 0.01m];
+        private static readonly decimal[] _validChange = [100, 50, 20, 10, 5, 1, 0.5m, 0.25m, 0.10m, 0.05m, 0.01m];
         internal static decimal[] CalculateChange(decimal totalPaid, decimal totalCost)
         {
             List<decimal> result = new List<decimal>();
