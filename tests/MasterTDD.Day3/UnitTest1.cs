@@ -42,18 +42,16 @@ namespace MasterTDD.Day3
         {
             List<decimal> result = new List<decimal>();
             var difference = totalPaid - totalCost;
-            var changePaid = difference;
-
-            while (changePaid > 0)
+            var changeRemaining = difference;
+            while (changeRemaining >= 0.01m)
             {
-                var change = _validChange.FirstOrDefault(x => x <= changePaid);
-                if (change > 0)
+                var change = _validChange.FirstOrDefault(x => x <= changeRemaining);
+                if (change >= 0)
                 {
-                    changePaid -= change;
+                    changeRemaining -= change;
                     result.Add(change);
                 }
             }
-
             return result.ToArray();
         }
     }
