@@ -17,7 +17,7 @@ namespace MasterTDD.Day3
     {
         internal static int[] CalculateChange(decimal input)
         {
-            throw new NotImplementedException();
+            return Array.Empty<int>();
         }
     }
 }
