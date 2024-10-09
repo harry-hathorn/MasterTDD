@@ -1,5 +1,4 @@
 using FluentAssertions;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MasterTDD.Day3
 {
@@ -32,10 +31,10 @@ namespace MasterTDD.Day3
 
     internal class ChangeCalculator
     {
-        private static readonly int[] _validChange = [100, 50, 20, 5, 1];
-        internal static int[] CalculateChange(decimal totalPaid, decimal totalCost)
+        private static readonly decimal[] _validChange = [100, 50, 20, 5, 1];
+        internal static decimal[] CalculateChange(decimal totalPaid, decimal totalCost)
         {
-            List<int> result = new List<int>();
+            List<decimal> result = new List<decimal>();
             var difference = totalPaid - totalCost;
             var change = _validChange.FirstOrDefault(x => x == difference);
             if (change > 0)
