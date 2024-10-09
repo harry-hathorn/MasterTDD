@@ -20,21 +20,17 @@ namespace MasterTDD.Day3
 
     internal class ChangeCalculator
     {
+        private static readonly int[] _validChange = [100, 50, 20];
         internal static int[] CalculateChange(decimal totalPaid, decimal totalCost)
         {
-            if (totalPaid == 200 && totalCost == 100)
+            List<int> result = new List<int>();
+            var difference = totalPaid - totalCost;
+            var change = _validChange.FirstOrDefault(x => x == difference);
+            if (change > 0)
             {
-                return [100];
+                result.Add(change);
             }
-            if (totalPaid == 150 && totalCost == 100)
-            {
-                return [50];
-            }
-            if (totalPaid == 120 && totalCost == 100)
-            {
-                return [20];
-            }
-            return Array.Empty<int>();
+            return result.ToArray();
         }
     }
 }
