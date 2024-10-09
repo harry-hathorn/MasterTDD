@@ -1,19 +1,29 @@
 using FluentAssertions;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MasterTDD.Day3
 {
     public class GetChangeShould
     {
+        public static TheoryData<decimal, decimal, decimal[]> TheoryData =>
+            new()
+            {
+                   { 100, 100, [] },
+                   { 200, 200, [] },
+                   { 1500, 1500, [] },
+                   { 200, 100, [100] },
+                   { 150, 100, [50] },
+                   { 120, 100, [20] },
+                   { 105, 100, [5] },
+                   { 101, 100, [1] },
+                   { 120, 100, [20] },
+                   { 105, 100, [5] },
+                   { 101, 100, [1] }
+            };
+
         [Theory]
-        [InlineData(100, 100)]
-        [InlineData(200, 200)]
-        [InlineData(1500, 1500)]
-        [InlineData(200, 100, 100)]
-        [InlineData(150, 100, 50)]
-        [InlineData(120, 100, 20)]
-        [InlineData(105, 100, 5)]
-        [InlineData(101, 100, 1)]
-        public void CalculateChange(decimal totalPaid, decimal totalCost, params int[] expectedChange)
+        [MemberData(nameof(TheoryData))]
+        public void CalculateChange(decimal totalPaid, decimal totalCost, decimal[] expectedChange)
         {
             var change = ChangeCalculator.CalculateChange(totalPaid, totalCost);
             change.Should().BeEquivalentTo(expectedChange);
