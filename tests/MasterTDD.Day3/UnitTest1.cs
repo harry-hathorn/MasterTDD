@@ -4,7 +4,7 @@ namespace MasterTDD.Day3
 {
     public class GetChangeShould
     {
-        public static TheoryData<decimal, decimal, decimal[]> TheoryData =>
+        public static TheoryData<decimal, decimal, decimal[]> CalculateChangeData =>
             new()
             {
                    { 100, 100, [] },
@@ -26,7 +26,7 @@ namespace MasterTDD.Day3
             };
 
         [Theory]
-        [MemberData(nameof(TheoryData))]
+        [MemberData(nameof(CalculateChangeData))]
         public void CalculateChange(decimal totalPaid, decimal totalCost, decimal[] expectedChange)
         {
             var change = ChangeCalculator.CalculateChange(totalPaid, totalCost);
