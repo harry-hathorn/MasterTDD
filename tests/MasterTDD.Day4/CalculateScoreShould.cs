@@ -10,7 +10,12 @@ namespace MasterTDD.Day4
         {
             var result = TinPinBowlingGame.CalculateScore("X|X|X|X|X|X|X|X|X|X||XX");
             result.Should().Be(300);
-
+        }
+        [Fact]
+        public void ReturnMinimumScore()
+        {
+            var result = TinPinBowlingGame.CalculateScore("--|--|--|--|--|--|--|--|--|--||");
+            result.Should().Be(0);
         }
 
         public class TinPinBowlingGame
