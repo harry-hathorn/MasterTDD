@@ -4,61 +4,31 @@ namespace MasterTDD.Day4
 {
     public class CalculateScoreShould
     {
-        [Fact]
-        public void ReturnMaximumScore()
+        public static TheoryData<string, int> ScoreCalculations => new()
         {
-            var result = TinPinBowlingGame.CalculateScore("X|X|X|X|X|X|X|X|X|X||XX");
-            result.Should().Be(300);
-        }
-
-        [Fact]
-        public void ReturnMinimumScore()
-        {
-            var result = TinPinBowlingGame.CalculateScore("--|--|--|--|--|--|--|--|--|--||");
-            result.Should().Be(0);
-        }
-
-        public static TheoryData<string, int> StrikeCalculations => new()
-        {
-            { "X|5-|-2|--|--|--|--|--|--|--||", 24 },
-            { "X|5-|-3|X|25|-8|--|--|--|--||", 62 },
-            { "X|5-|-3|X|25|-8|X|2-|--|--||", 76 },
-            { "X|5-|-3|X|25|-8|X|2-|--|X||62", 94 }
+           // spares
+           { "2/|3/|--|--|--|--|--|--|--|--||", 23 },
+           { "-/|-9|-9|-9|-9|-9|-9|-9|-9|-9||", 91 },
+           { "-1|-2|3-|5-|6-|29|59|2-|34|2/||2", 53 },
+           // no strikes
+           { "9-|9-|9-|9-|9-|9-|9-|9-|9-|9-||", 90 },
+           { "-9|-9|-9|-9|-9|-9|-9|-9|-9|-9||", 90 },
+           { "-1|-2|3-|5-|6-|29|59|2-|34|27||", 48 },
+           // strikes
+           { "X|5-|-2|--|--|--|--|--|--|--||", 24 },
+           { "X|5-|-3|X|25|-8|--|--|--|--||", 62 },
+           { "X|5-|-3|X|25|-8|X|2-|--|--||", 76 },
+           { "5/|5/|5/|5/|5/|5/|5/|5/|5/|5/||5", 150 },
+           { "X|X|X|X|X|X|X|X|X|X||XX", 300 },
+           // minimum
+           { "--|--|--|--|--|--|--|--|--|--||", 0 },
+           // maximum
+           { "X|X|X|X|X|X|X|X|X|X||XX", 300 }
         };
 
         [Theory]
-        [MemberData(nameof(StrikeCalculations))]
-        public void CalculateWithStrikes(string input, int expectedResult)
-        {
-            var result = TinPinBowlingGame.CalculateScore(input);
-            result.Should().Be(expectedResult);
-        }
-
-        public static TheoryData<string, int> NoStrikesCalculations => new()
-        {
-            { "9-|9-|9-|9-|9-|9-|9-|9-|9-|9-||", 90 },
-            { "-9|-9|-9|-9|-9|-9|-9|-9|-9|-9||", 90 },
-            { "-1|-2|3-|5-|6-|29|59|2-|34|27||", 48 }
-        };
-
-        [Theory]
-        [MemberData(nameof(NoStrikesCalculations))]
-        public void CalculateWithNoStrikes(string input, int expectedResult)
-        {
-            var result = TinPinBowlingGame.CalculateScore(input);
-            result.Should().Be(expectedResult);
-        }
-
-        public static TheoryData<string, int> SpareCalculations => new()
-        {
-            { "2/|3/|--|--|--|--|--|--|--|--||", 30 },
-            { "-/|-9|-9|-9|-9|-9|-9|-9|-9|-9||", 100 },
-            { "-1|-2|3-|5-|6-|29|59|2-|34|2/||2", 53 }
-        };
-
-        [Theory]
-        [MemberData(nameof(SpareCalculations))]
-        public void CalculateSpares(string input, int expectedResult)
+        [MemberData(nameof(ScoreCalculations))]
+        public void CalculateScores(string input, int expectedResult)
         {
             var result = TinPinBowlingGame.CalculateScore(input);
             result.Should().Be(expectedResult);
@@ -104,7 +74,8 @@ namespace MasterTDD.Day4
                     else if (turn.Contains("/"))
                     {
                         score += CalculateFrame(combined[i]);
-                        score += CalculateFrame(combined[i + 1]);
+                        var nextAttempt = combined[i + 1][0];
+                        score += CalculateFrame(nextAttempt.ToString());
                     }
                     else
                     {
