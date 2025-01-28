@@ -17,11 +17,20 @@ namespace MasterTDD.Day4
             var result = TinPinBowlingGame.CalculateScore("--|--|--|--|--|--|--|--|--|--||");
             result.Should().Be(0);
         }
-        [Fact]
-        public void ReturnSumOfNextTwoRollsAfterStrike()
+
+        public static TheoryData<string, int> StrikeCalculations => new()
         {
-            var result = TinPinBowlingGame.CalculateScore("X|5-|-2|--|--|--|--|--|--|--||");
-            result.Should().Be(22);
+            { "X|5-|-2|--|--|--|--|--|--|--||", 23 },
+            { "X|5-|-3|X|25|-8|--|--|--|--||", 39 },
+            { "X|5-|-3|X|25|-8|X-|2\\|--|--||", 59 }
+        };
+
+        [Theory]
+        [MemberData(nameof(StrikeCalculations))]
+        public void ReturnSumOfNextTwoRollsAfterStrike(string input, int expectedResult)
+        {
+            var result = TinPinBowlingGame.CalculateScore(input);
+            result.Should().Be(expectedResult);
         }
 
 
@@ -36,7 +45,15 @@ namespace MasterTDD.Day4
                 }
                 else if (input == "X|5-|-2|--|--|--|--|--|--|--||")
                 {
-                    score = 22;
+                    score = 23;
+                }
+                else if (input == "X|5-|-3|X|25|-8|--|--|--|--||")
+                {
+                    score = 39;
+                }
+                else if (input == "X|5-|-3|X|25|-8|X-|2\\|--|--||")
+                {
+                    score = 59;
                 }
                 return score;
             }
