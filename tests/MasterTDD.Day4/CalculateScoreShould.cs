@@ -33,13 +33,20 @@ namespace MasterTDD.Day4
             result.Should().Be(expectedResult);
         }
 
-        [Fact]
-        public void CalculateWithNoStrikes()
+        public static TheoryData<string, int> NoStrikesCalculations => new()
         {
-            var result = TinPinBowlingGame.CalculateScore("9-|9-|9-|9-|9-|9-|9-|9-|9-|9-||");
-            result.Should().Be(90);
-        }
+            { "9-|9-|9-|9-|9-|9-|9-|9-|9-|9-||", 90 },
+            { "-9|-9|-9|-9|-9|-9|-9|-9|-9|-9||", 90 },
+            { "-1|-2|3-|5-|6-|29|59|2-|34|27||", 48 }
+        };
 
+        [Theory]
+        [MemberData(nameof(NoStrikesCalculations))]
+        public void CalcaulteWithNoStrikes(string input, int expectedResult)
+        {
+            var result = TinPinBowlingGame.CalculateScore(input);
+            result.Should().Be(expectedResult);
+        }
 
         public class TinPinBowlingGame
         {
