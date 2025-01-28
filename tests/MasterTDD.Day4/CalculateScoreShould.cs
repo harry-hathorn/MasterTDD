@@ -1,5 +1,6 @@
 ﻿
 using FluentAssertions;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace MasterTDD.Day4
 {
@@ -20,9 +21,9 @@ namespace MasterTDD.Day4
 
         public static TheoryData<string, int> StrikeCalculations => new()
         {
-            { "X|5-|-2|--|--|--|--|--|--|--||", 23 },
-            { "X|5-|-3|X|25|-8|--|--|--|--||", 39 },
-            { "X|5-|-3|X|25|-8|X-|2\\|--|--||", 59 }
+            { "X|5-|-2|--|--|--|--|--|--|--||", 24 },
+            { "X|5-|-3|X|25|-8|--|--|--|--||", 62 },
+            { "X|5-|-3|X|25|-8|X|2-|--|--||", 76 }
         };
 
         [Theory]
@@ -36,24 +37,47 @@ namespace MasterTDD.Day4
 
         public class TinPinBowlingGame
         {
-            public static int CalculateScore(string input)
+            private static int CalculateFrame(string frame)
             {
                 int score = 0;
-                if (input == "X|X|X|X|X|X|X|X|X|X||XX")
+
+                var attempts = frame.ToCharArray();
+                foreach (var attempt in attempts)
                 {
-                    score = 300;
+                    if (attempt == 'X')
+                    {
+                        score = 10;
+                    }
+                    else if (int.TryParse(attempt.ToString(), out int newScore))
+                    {
+                        if (newScore > score)
+                        {
+                            score = newScore;
+                        }
+                    }
                 }
-                else if (input == "X|5-|-2|--|--|--|--|--|--|--||")
+                return score;
+            }
+            public static int CalculateScore(string input)
+            {
+                var parts = input.Split("||");
+                string[] turns = parts[0].Split("|");
+                var lastTwoAttempts = parts[1].Select(x => x.ToString()).ToArray();
+                var combined = turns.Concat(lastTwoAttempts).ToArray();
+                int score = 0;
+                for (int i = 0; i <= 9; i++)
                 {
-                    score = 23;
-                }
-                else if (input == "X|5-|-3|X|25|-8|--|--|--|--||")
-                {
-                    score = 39;
-                }
-                else if (input == "X|5-|-3|X|25|-8|X-|2\\|--|--||")
-                {
-                    score = 59;
+                    var turn = combined[i];
+                    if (turn == "X")
+                    {
+                        score += CalculateFrame(turn);
+                        score += CalculateFrame(combined[i + 1]);
+                        score += CalculateFrame(combined[i + 2]);
+                    }
+                    else
+                    {
+                        score += CalculateFrame(turn);
+                    }
                 }
                 return score;
             }
