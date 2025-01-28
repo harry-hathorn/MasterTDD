@@ -1,6 +1,4 @@
-﻿
-using FluentAssertions;
-using static System.Net.Mime.MediaTypeNames;
+﻿using FluentAssertions;
 
 namespace MasterTDD.Day4
 {
@@ -23,15 +21,23 @@ namespace MasterTDD.Day4
         {
             { "X|5-|-2|--|--|--|--|--|--|--||", 24 },
             { "X|5-|-3|X|25|-8|--|--|--|--||", 62 },
-            { "X|5-|-3|X|25|-8|X|2-|--|--||", 76 }
+            { "X|5-|-3|X|25|-8|X|2-|--|--||", 76 },
+            { "X|5-|-3|X|25|-8|X|2-|--|X||62", 94 }
         };
 
         [Theory]
         [MemberData(nameof(StrikeCalculations))]
-        public void ReturnSumOfNextTwoRollsAfterStrike(string input, int expectedResult)
+        public void CalculateWithStrikes(string input, int expectedResult)
         {
             var result = TinPinBowlingGame.CalculateScore(input);
             result.Should().Be(expectedResult);
+        }
+
+        [Fact]
+        public void CalculateWithNoStrikes()
+        {
+            var result = TinPinBowlingGame.CalculateScore("9-|9-|9-|9-|9-|9-|9-|9-|9-|9-||");
+            result.Should().Be(90);
         }
 
 
@@ -40,7 +46,6 @@ namespace MasterTDD.Day4
             private static int CalculateFrame(string frame)
             {
                 int score = 0;
-
                 var attempts = frame.ToCharArray();
                 foreach (var attempt in attempts)
                 {
@@ -48,12 +53,10 @@ namespace MasterTDD.Day4
                     {
                         score = 10;
                     }
-                    else if (int.TryParse(attempt.ToString(), out int newScore))
+                    else if (int.TryParse(attempt.ToString(), out int newScore)
+                        && newScore > score)
                     {
-                        if (newScore > score)
-                        {
-                            score = newScore;
-                        }
+                        score = newScore;
                     }
                 }
                 return score;
