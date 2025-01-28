@@ -10,6 +10,7 @@ namespace MasterTDD.Day4
             var result = TinPinBowlingGame.CalculateScore("X|X|X|X|X|X|X|X|X|X||XX");
             result.Should().Be(300);
         }
+
         [Fact]
         public void ReturnMinimumScore()
         {
@@ -42,7 +43,22 @@ namespace MasterTDD.Day4
 
         [Theory]
         [MemberData(nameof(NoStrikesCalculations))]
-        public void CalcaulteWithNoStrikes(string input, int expectedResult)
+        public void CalculateWithNoStrikes(string input, int expectedResult)
+        {
+            var result = TinPinBowlingGame.CalculateScore(input);
+            result.Should().Be(expectedResult);
+        }
+
+        public static TheoryData<string, int> SpareCalculations => new()
+        {
+            { "2/|3/|--|--|--|--|--|--|--|--||", 30 },
+            { "-/|-9|-9|-9|-9|-9|-9|-9|-9|-9||", 100 },
+            { "-1|-2|3-|5-|6-|29|59|2-|34|2/||2", 53 }
+        };
+
+        [Theory]
+        [MemberData(nameof(SpareCalculations))]
+        public void CalculateSpares(string input, int expectedResult)
         {
             var result = TinPinBowlingGame.CalculateScore(input);
             result.Should().Be(expectedResult);
@@ -56,9 +72,10 @@ namespace MasterTDD.Day4
                 var attempts = frame.ToCharArray();
                 foreach (var attempt in attempts)
                 {
-                    if (attempt == 'X')
+                    if (attempt == 'X' || attempt == '/')
                     {
                         score = 10;
+                        break;
                     }
                     else if (int.TryParse(attempt.ToString(), out int newScore)
                         && newScore > score)
@@ -80,9 +97,14 @@ namespace MasterTDD.Day4
                     var turn = combined[i];
                     if (turn == "X")
                     {
-                        score += CalculateFrame(turn);
+                        score += CalculateFrame(combined[i]);
                         score += CalculateFrame(combined[i + 1]);
                         score += CalculateFrame(combined[i + 2]);
+                    }
+                    else if (turn.Contains("/"))
+                    {
+                        score += CalculateFrame(combined[i]);
+                        score += CalculateFrame(combined[i + 1]);
                     }
                     else
                     {
