@@ -160,69 +160,6 @@ namespace MasterTDD.Day4
                     _ => int.Parse(value)
                 };
             }
-
-            public static int CalculateScoreOld(string input)
-            {
-                int score = 0;
-                var parts = input.Split("||");
-                var first10Attempts = parts[0].Split("|");
-                var lastTwoAttempts = parts[1].Select(x => x.ToString()).ToArray();
-                var frames = first10Attempts.Concat(lastTwoAttempts).ToArray();
-                for (int i = 0; i < 10; i++)
-                {
-                    var frame = frames[i].Replace("-", "");
-                    if (frame == "X")
-                    {
-                        score += 10;
-                        var next = frames[i + 1].Replace("-", "");
-                        if (next == "X")
-                        {
-                            score += 10;
-                            var nextNext = frames[i + 2][0];
-                            if (nextNext == 'X')
-                            {
-                                score += 10;
-                            }
-                            else if (nextNext != '-')
-                            {
-                                score += int.Parse(nextNext.ToString());
-                            }
-                        }
-                        else if (i == 9)
-                        {
-                            score += int.Parse(next.Last().ToString());
-                            var nextNext = frames[i + 2].Replace("-", "")[0];
-                            score += int.Parse(nextNext.ToString());
-                        }
-                        else if (next.Last() == '/')
-                        {
-                            score += 10;
-                        }
-                        else
-                        {
-                            score += int.Parse(next.Last().ToString());
-                        }
-                    }
-                    else if (frame.EndsWith("/"))
-                    {
-                        score += 10;
-                        var next = frames[i + 1][0];
-                        if (next == 'X')
-                        {
-                            score += 10;
-                        }
-                        else if (next != '-')
-                        {
-                            score += int.Parse(next.ToString());
-                        }
-                    }
-                    else if (!string.IsNullOrEmpty(frame))
-                    {
-                        score += int.Parse(frame.Last().ToString());
-                    }
-                }
-                return score;
-            }
         }
 
     }
