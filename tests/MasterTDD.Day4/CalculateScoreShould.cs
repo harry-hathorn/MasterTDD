@@ -32,11 +32,11 @@ namespace MasterTDD.Day4
         [MemberData(nameof(ScoreCalculations))]
         public void CalculateScores(string input, int expectedResult)
         {
-            var result = TinPinBowlingGame.CalculateScore(input);
+            var result = TenPinBowlingGame.CalculateScore(input);
             result.Should().Be(expectedResult);
         }
 
-        public class TinPinBowlingGame
+        public class TenPinBowlingGame
         {
             private record Frame(
                 bool IsStrike,
@@ -157,6 +157,7 @@ namespace MasterTDD.Day4
                     "X" => 10,
                     "/" => 10,
                     "-" => 0,
+                    "" => 0,
                     _ => int.Parse(value)
                 };
             }
