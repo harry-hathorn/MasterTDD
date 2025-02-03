@@ -14,5 +14,16 @@ namespace MasterTDD.Day5
             var rover = new MarsRover(input, 0, 0);
             rover.Direction.Should().Be(expected);
         }
+
+        [Theory]
+        [InlineData(0, 0)]
+        [InlineData(1, 1)]
+        [InlineData(2, 2)]
+        [InlineData(3, 3)]
+        public void SetStartingXPosition(int input, int expected)
+        {
+            var rover = new MarsRover('N', input, 0);
+            rover.PositionX.Should().Be(expected);
+        }
     }
 }
