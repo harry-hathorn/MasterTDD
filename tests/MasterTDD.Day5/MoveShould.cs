@@ -8,8 +8,8 @@ namespace MasterTDD.Day5
         public void MoveOneLeft() {
             var rover = MarsRover.Create('N', 5, 5);
             rover.Move('l');
-
             rover.PositionX.Should().Be(4);
+            rover.Direction.Should().Be('W');
         }
 
         [Fact]

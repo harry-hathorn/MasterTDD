@@ -45,6 +45,7 @@
                 if (command == 'l')
                 {
                     PositionX -= 1;
+                    Direction = West;
                 }
                 else if (command == 'r')
                 {
