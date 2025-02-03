@@ -49,6 +49,7 @@ namespace MasterTDD.Day5
             rover.PositionX.Should().Be(0);
             rover.Direction.Should().Be('W');
         }
+
         [Fact]
         public void NotMoveOutOfBoundsRight()
         {
@@ -56,6 +57,15 @@ namespace MasterTDD.Day5
             rover.Move('r');
             rover.PositionX.Should().Be(20);
             rover.Direction.Should().Be('E');
+        }
+
+        [Fact]
+        public void NotMoveOutOfBoundsForward()
+        {
+            var rover = MarsRover.Create('N', 0, 10);
+            rover.Move('f');
+            rover.PositionY.Should().Be(10);
+            rover.Direction.Should().Be('N');
         }
 
         [Fact]
