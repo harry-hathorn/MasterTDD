@@ -20,5 +20,13 @@ namespace MasterTDD.Day5
 
             rover.PositionX.Should().Be(6);
         }
+
+        [Fact]
+        public void MoveOneUp()
+        {
+            var rover = MarsRover.Create('N', 5, 5);
+            rover.Move('f');
+            rover.PositionY.Should().Be(6);
+        }
     }
 }

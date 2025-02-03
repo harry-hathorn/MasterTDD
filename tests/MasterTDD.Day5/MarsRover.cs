@@ -50,6 +50,10 @@
                 {
                     PositionX += 1;
                 }
+                else if (command == 'f')
+                {
+                    PositionY += 1;
+                }
             }
         }
     }
