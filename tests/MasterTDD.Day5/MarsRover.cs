@@ -54,6 +54,10 @@
                 {
                     PositionY += 1;
                 }
+                else if (command == 'b')
+                {
+                    PositionY -= 1;
+                }
             }
         }
     }
