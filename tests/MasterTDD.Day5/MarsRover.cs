@@ -49,7 +49,7 @@ namespace MasterTDD.Day5
                         Direction = West;
                         break;
                     case 'r':
-                        PositionX += 1;
+                        PositionX = Math.Min(PositionX + 1, MaxPositionX);
                         Direction = East;
                         break;
                     case 'f':

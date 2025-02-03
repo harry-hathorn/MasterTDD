@@ -42,12 +42,20 @@ namespace MasterTDD.Day5
         }
 
         [Fact]
-        public void NotMoveOutOfBounds()
+        public void NotMoveOutOfBoundsLeft()
         {
             var rover = MarsRover.Create('N', 0, 0);
             rover.Move('l');
             rover.PositionX.Should().Be(0);
             rover.Direction.Should().Be('W');
+        }
+        [Fact]
+        public void NotMoveOutOfBoundsRight()
+        {
+            var rover = MarsRover.Create('N', 20, 0);
+            rover.Move('r');
+            rover.PositionX.Should().Be(20);
+            rover.Direction.Should().Be('E');
         }
 
         [Fact]
