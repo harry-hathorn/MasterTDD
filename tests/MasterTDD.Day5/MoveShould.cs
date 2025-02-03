@@ -12,6 +12,11 @@ namespace MasterTDD.Day5
             { new RoverPosition('N', 5, 5), "r", new RoverPosition('E', 6, 5) },
             { new RoverPosition('S', 5, 5), "f", new RoverPosition('N', 5, 6) },
             { new RoverPosition('N', 5, 5), "b", new RoverPosition('S', 5, 4) },
+            { new RoverPosition('N', 0, 0), "l", new RoverPosition('W', 0, 0) },
+            { new RoverPosition('N', 20, 0), "r", new RoverPosition('E', 20, 0) },
+            { new RoverPosition('N', 0, 10), "f", new RoverPosition('N', 0, 10) },
+            { new RoverPosition('N', 0, 10), "f", new RoverPosition('N', 0, 10) },
+            { new RoverPosition('N', 0, 0), "b", new RoverPosition('S', 0, 0) },
         };
 
         [Theory]
@@ -26,51 +31,6 @@ namespace MasterTDD.Day5
         }
 
 
-
-        [Fact]
-        public void MoveOneDown()
-        {
-            var rover = MarsRover.Create('N', 5, 5);
-            rover.Move('b');
-            rover.PositionY.Should().Be(4);
-            rover.Direction.Should().Be('S');
-        }
-
-        [Fact]
-        public void NotMoveOutOfBoundsLeft()
-        {
-            var rover = MarsRover.Create('N', 0, 0);
-            rover.Move('l');
-            rover.PositionX.Should().Be(0);
-            rover.Direction.Should().Be('W');
-        }
-
-        [Fact]
-        public void NotMoveOutOfBoundsRight()
-        {
-            var rover = MarsRover.Create('N', 20, 0);
-            rover.Move('r');
-            rover.PositionX.Should().Be(20);
-            rover.Direction.Should().Be('E');
-        }
-
-        [Fact]
-        public void NotMoveOutOfBoundsForward()
-        {
-            var rover = MarsRover.Create('N', 0, 10);
-            rover.Move('f');
-            rover.PositionY.Should().Be(10);
-            rover.Direction.Should().Be('N');
-        }
-
-        [Fact]
-        public void NotMoveOutOfBoundsBackward()
-        {
-            var rover = MarsRover.Create('N', 0, 0);
-            rover.Move('b');
-            rover.PositionY.Should().Be(0);
-            rover.Direction.Should().Be('S');
-        }
 
         [Fact]
         public void ThrowArgumentException_ForInvalidCommand()
