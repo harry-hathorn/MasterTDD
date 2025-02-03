@@ -12,14 +12,12 @@ namespace MasterTDD.Day5
         private const char South = 'S';
         private const char East = 'E';
         private const char West = 'W';
-
         private MarsRover(char direction, int positionX, int positionY)
         {
             Direction = direction;
             PositionX = positionX;
             PositionY = positionY;
         }
-
         public char Direction { get; private set; }
         public int PositionX { get; private set; }
         public int PositionY { get; private set; }
@@ -47,7 +45,7 @@ namespace MasterTDD.Day5
                 switch (command)
                 {
                     case 'l':
-                        PositionX -= 1;
+                        PositionX = Math.Max(PositionX - 1, MinPositionX);
                         Direction = West;
                         break;
                     case 'r':
