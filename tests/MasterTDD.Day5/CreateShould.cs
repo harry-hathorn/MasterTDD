@@ -2,7 +2,7 @@
 
 namespace MasterTDD.Day5
 {
-    public class ConstructorShould
+    public class CreateShould
     {
         [Theory]
         [InlineData('N', 'N')]
@@ -11,7 +11,7 @@ namespace MasterTDD.Day5
         [InlineData('E', 'E')]
         public void SetStartingDirection(char input, char expected)
         {
-            var rover = new MarsRover(input, 0, 0);
+            var rover = MarsRover.Create(input, 0, 0);
             rover.Direction.Should().Be(expected);
         }
 
@@ -22,7 +22,7 @@ namespace MasterTDD.Day5
         [InlineData(3, 3)]
         public void SetStartingXPosition(int input, int expected)
         {
-            var rover = new MarsRover('N', input, 0);
+            var rover = MarsRover.Create('N', input, 0);
             rover.PositionX.Should().Be(expected);
         }
 
@@ -33,7 +33,7 @@ namespace MasterTDD.Day5
         [InlineData(3, 3)]
         public void SetStartingYPosition(int input, int expected)
         {
-            var rover = new MarsRover('N', 0 , input);
+            var rover = MarsRover.Create('N', 0 , input);
             rover.PositionY.Should().Be(expected);
         }
     }
