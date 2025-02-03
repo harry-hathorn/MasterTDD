@@ -37,5 +37,16 @@
             }
             return new MarsRover(direction, positionX, positionY);
         }
+
+        public void Move(string commands)
+        {
+            foreach (char command in commands)
+            {
+                if (command == 'l')
+                {
+                    PositionY -= 1;
+                }
+            }
+        }
     }
 }
