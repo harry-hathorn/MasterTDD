@@ -5,7 +5,8 @@ namespace MasterTDD.Day5
     public class MoveShould
     {
         [Fact]
-        public void MoveOneLeft() {
+        public void MoveOneLeft()
+        {
             var rover = MarsRover.Create('N', 5, 5);
             rover.Move('l');
             rover.PositionX.Should().Be(4);
@@ -38,6 +39,14 @@ namespace MasterTDD.Day5
             rover.Move('b');
             rover.PositionY.Should().Be(4);
             rover.Direction.Should().Be('S');
+        }
+
+        [Fact]
+        public void ThrowArgumentException_ForInvalidCommand()
+        {
+            var rover = MarsRover.Create('N', 5, 5);
+            var exception = Assert.Throws<ArgumentException>(() => rover.Move('x'));
+            Assert.Equal("Command cannot be 'x'", exception.Message);
         }
     }
 }

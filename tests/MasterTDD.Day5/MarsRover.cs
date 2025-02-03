@@ -63,7 +63,7 @@ namespace MasterTDD.Day5
                         Direction = South;
                         break;
                     default:
-                        break;
+                        throw new ArgumentException($"Command cannot be '{command}'");
                 }
             }
         }
