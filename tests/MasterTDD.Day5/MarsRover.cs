@@ -52,13 +52,13 @@ namespace MasterTDD.Day5
                         PositionX = Math.Min(PositionX + 1, MaxPositionX);
                         Direction = East;
                         break;
+                    case 'b':
+                        PositionY = Math.Max(PositionY - 1, MinPositionY);
+                        Direction = South;
+                        break;
                     case 'f':
                         PositionY = Math.Min(PositionY + 1, MaxPositionY);
                         Direction = North;
-                        break;
-                    case 'b':
-                        PositionY -= 1;
-                        Direction = South;
                         break;
                     default:
                         throw new ArgumentException($"Command cannot be '{command}'");

@@ -69,6 +69,15 @@ namespace MasterTDD.Day5
         }
 
         [Fact]
+        public void NotMoveOutOfBoundsBackward()
+        {
+            var rover = MarsRover.Create('N', 0, 0);
+            rover.Move('b');
+            rover.PositionY.Should().Be(0);
+            rover.Direction.Should().Be('S');
+        }
+
+        [Fact]
         public void ThrowArgumentException_ForInvalidCommand()
         {
             var rover = MarsRover.Create('N', 5, 5);
