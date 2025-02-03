@@ -4,10 +4,15 @@ namespace MasterTDD.Day5
 {
     public class ConstructorShould
     {
-        [Fact]
-        public void SetStartingDirection() {
-            var rover = new MarsRover('N', 0, 0);
-            rover.Direction.Should().Be('N');
+        [Theory]
+        [InlineData('N', 'N')]
+        [InlineData('S', 'S')]
+        [InlineData('W', 'W')]
+        [InlineData('E', 'E')]
+        public void SetStartingDirection(char input, char expected)
+        {
+            var rover = new MarsRover(input, 0, 0);
+            rover.Direction.Should().Be(expected);
         }
     }
 }
