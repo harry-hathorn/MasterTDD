@@ -37,6 +37,7 @@ namespace MasterTDD.Day5
             var rover = MarsRover.Create('N', 5, 5);
             rover.Move('b');
             rover.PositionY.Should().Be(4);
+            rover.Direction.Should().Be('S');
         }
     }
 }

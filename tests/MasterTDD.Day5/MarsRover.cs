@@ -60,6 +60,7 @@
                 else if (command == 'b')
                 {
                     PositionY -= 1;
+                    Direction = South;
                 }
             }
         }
