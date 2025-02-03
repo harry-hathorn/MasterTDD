@@ -20,6 +20,9 @@ namespace MasterTDD.Day5
             { new RoverPosition('N', 1, 1), "frf", new RoverPosition('N', 2, 3) },
             { new RoverPosition('N', 1, 1), "frrrfb", new RoverPosition('S', 4, 2) },
             { new RoverPosition('N', 1, 1), "fffrrrlrllrrffbrbrbllffrr", new RoverPosition('E', 6, 5) },
+            { new RoverPosition('N', 18, 8), "bbbfffffffffflllrrrrrrrrrr", new RoverPosition('E', 20, 10) },
+            { new RoverPosition('N', 18, 8), "bbbfffffffffflll", new RoverPosition('W', 15, 10) },
+            { new RoverPosition('N', 18, 8), "bbbfflrrlrrlrrr", new RoverPosition('E', 20, 7) },
         };
 
         [Theory]
