@@ -42,10 +42,20 @@ namespace MasterTDD.Day5
         [InlineData('X')]
         [InlineData('Y')]
         [InlineData('Z')]
-        public void ThrowArgumentExceptionForInvalidPosition(char input)
+        public void ThrowArgumentException_WhenGivenInvalidPosition(char input)
         {
             var exception = Assert.Throws<ArgumentException>(() => MarsRover.Create(input, 0, 0));
             Assert.Equal($"Position cannot be '{input}'", exception.Message);
+        }
+
+        [Theory]
+        [InlineData(-1, 50)]
+        [InlineData(50, 0)]
+        [InlineData(10, 20)]
+        public void ThrowArgumentException_WhenGivenOutOfBounds(int positionX, int positionY)
+        {
+            var exception = Assert.Throws<ArgumentException>(() => MarsRover.Create('N', positionX, positionY));
+            Assert.Equal($"Position '{positionX},{positionY}' is out of bounds", exception.Message);
         }
     }
 }

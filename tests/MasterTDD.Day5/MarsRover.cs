@@ -24,6 +24,10 @@ namespace MasterTDD.Day5
             {
                 throw new ArgumentException($"Position cannot be '{direction}'");
             }
+            if (positionX > 20 || positionX < 0 || positionY > 10 || positionY < 0)
+            {
+                throw new ArgumentException($"Position '{positionX},{positionY}' is out of bounds");
+            }
             return new MarsRover(direction, positionX, positionY);
         }
     }
