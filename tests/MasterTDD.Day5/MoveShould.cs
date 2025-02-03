@@ -17,6 +17,9 @@ namespace MasterTDD.Day5
             { new RoverPosition('N', 0, 10), "f", new RoverPosition('N', 0, 10) },
             { new RoverPosition('N', 0, 10), "f", new RoverPosition('N', 0, 10) },
             { new RoverPosition('N', 0, 0), "b", new RoverPosition('S', 0, 0) },
+            { new RoverPosition('N', 1, 1), "frf", new RoverPosition('N', 2, 3) },
+            { new RoverPosition('N', 1, 1), "frrrfb", new RoverPosition('S', 4, 2) },
+            { new RoverPosition('N', 1, 1), "fffrrrlrllrrffbrbrbllffrr", new RoverPosition('E', 6, 5) },
         };
 
         [Theory]
@@ -29,8 +32,6 @@ namespace MasterTDD.Day5
             rover.PositionY.Should().Be(endingPosition.PositionY);
             rover.Direction.Should().Be(endingPosition.Direction);
         }
-
-
 
         [Fact]
         public void ThrowArgumentException_ForInvalidCommand()
