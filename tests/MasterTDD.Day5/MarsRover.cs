@@ -11,9 +11,9 @@ namespace MasterTDD.Day5
             PositionY = positionY;
         }
 
-        public char Direction { get; internal set; }
-        public int PositionX { get; internal set; }
-        public int PositionY { get; internal set; }
+        public char Direction { get; private set; }
+        public int PositionX { get; private set; }
+        public int PositionY { get; private set; }
 
         public static MarsRover Create(char direction, int positionX, int positionY)
         {

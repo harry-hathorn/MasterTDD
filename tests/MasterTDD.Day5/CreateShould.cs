@@ -52,6 +52,7 @@ namespace MasterTDD.Day5
         [InlineData(-1, 50)]
         [InlineData(50, 0)]
         [InlineData(10, 20)]
+        [InlineData(10, -1)]
         public void ThrowArgumentException_WhenGivenOutOfBounds(int positionX, int positionY)
         {
             var exception = Assert.Throws<ArgumentException>(() => MarsRover.Create('N', positionX, positionY));
