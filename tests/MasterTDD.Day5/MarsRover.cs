@@ -6,6 +6,10 @@
         private const int MinPositionX = 0;
         private const int MaxPositionY = 10;
         private const int MinPositionY = 0;
+        private const char North = 'N';
+        private const char South = 'S';
+        private const char East = 'E';
+        private const char West = 'W';
 
         private MarsRover(char direction, int positionX, int positionY)
         {
@@ -20,10 +24,10 @@
 
         public static MarsRover Create(char direction, int positionX, int positionY)
         {
-            if (direction != 'N' &&
-                direction != 'S' &&
-                direction != 'E' &&
-                direction != 'W')
+            if (direction != North &&
+                direction != South &&
+                direction != East &&
+                direction != West)
             {
                 throw new ArgumentException($"Position cannot be '{direction}'");
             }
