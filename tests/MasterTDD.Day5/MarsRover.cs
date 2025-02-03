@@ -55,6 +55,7 @@
                 else if (command == 'f')
                 {
                     PositionY += 1;
+                    Direction = North;
                 }
                 else if (command == 'b')
                 {

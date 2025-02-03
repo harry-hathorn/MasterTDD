@@ -25,9 +25,10 @@ namespace MasterTDD.Day5
         [Fact]
         public void MoveOneUp()
         {
-            var rover = MarsRover.Create('N', 5, 5);
+            var rover = MarsRover.Create('S', 5, 5);
             rover.Move('f');
             rover.PositionY.Should().Be(6);
+            rover.Direction.Should().Be('N');
         }
 
         [Fact]
