@@ -11,5 +11,14 @@ namespace MasterTDD.Day5
 
             rover.PositionY.Should().Be(4);
         }
+
+        [Fact]
+        public void MoveOneRight()
+        {
+            var rover = MarsRover.Create('N', 5, 5);
+            rover.Move("r");
+
+            rover.PositionY.Should().Be(6);
+        }
     }
 }
