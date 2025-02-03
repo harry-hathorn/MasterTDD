@@ -9,6 +9,7 @@ namespace MasterTDD.Day5
         public static TheoryData<RoverPosition, string, RoverPosition> Positions => new()
         {
             { new RoverPosition('N', 5, 5), "l", new RoverPosition('W', 4, 5) },
+            { new RoverPosition('N', 5, 5), "r", new RoverPosition('E', 6, 5) },
         };
 
         [Theory]
@@ -20,25 +21,6 @@ namespace MasterTDD.Day5
             rover.PositionX.Should().Be(endingPosition.PositionX);
             rover.PositionY.Should().Be(endingPosition.PositionY);
             rover.Direction.Should().Be(endingPosition.Direction);
-        }
-
-        [Fact]
-        public void MoveOneLeft()
-        {
-            var rover = MarsRover.Create('N', 5, 5);
-            rover.Move('l');
-            rover.PositionX.Should().Be(4);
-            rover.Direction.Should().Be('W');
-        }
-
-        [Fact]
-        public void MoveOneRight()
-        {
-            var rover = MarsRover.Create('N', 5, 5);
-            rover.Move('r');
-
-            rover.PositionX.Should().Be(6);
-            rover.Direction.Should().Be('E');
         }
 
         [Fact]
