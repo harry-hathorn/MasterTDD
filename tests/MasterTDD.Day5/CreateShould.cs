@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using System;
 
 namespace MasterTDD.Day5
 {
@@ -33,8 +34,18 @@ namespace MasterTDD.Day5
         [InlineData(3, 3)]
         public void SetStartingYPosition(int input, int expected)
         {
-            var rover = MarsRover.Create('N', 0 , input);
+            var rover = MarsRover.Create('N', 0, input);
             rover.PositionY.Should().Be(expected);
+        }
+
+        [Theory]
+        [InlineData('X')]
+        [InlineData('Y')]
+        [InlineData('Z')]
+        public void ThrowArgumentExceptionForInvalidPosition(char input)
+        {
+            var exception = Assert.Throws<ArgumentException>(() => MarsRover.Create(input, 0, 0));
+            Assert.Equal($"Position cannot be '{input}'", exception.Message);
         }
     }
 }

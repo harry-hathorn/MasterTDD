@@ -1,4 +1,6 @@
-﻿namespace MasterTDD.Day5
+﻿using Xunit.Sdk;
+
+namespace MasterTDD.Day5
 {
     internal class MarsRover
     {
@@ -15,6 +17,13 @@
 
         public static MarsRover Create(char direction, int positionX, int positionY)
         {
+            if (direction != 'N' &&
+                direction != 'S' &&
+                direction != 'E' &&
+                direction != 'W')
+            {
+                throw new ArgumentException($"Position cannot be '{direction}'");
+            }
             return new MarsRover(direction, positionX, positionY);
         }
     }
