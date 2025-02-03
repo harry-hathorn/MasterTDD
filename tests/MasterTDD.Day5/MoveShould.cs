@@ -9,7 +9,7 @@ namespace MasterTDD.Day5
             var rover = MarsRover.Create('N', 5, 5);
             rover.Move('l');
 
-            rover.PositionY.Should().Be(4);
+            rover.PositionX.Should().Be(4);
         }
 
         [Fact]
@@ -18,7 +18,7 @@ namespace MasterTDD.Day5
             var rover = MarsRover.Create('N', 5, 5);
             rover.Move('r');
 
-            rover.PositionY.Should().Be(6);
+            rover.PositionX.Should().Be(6);
         }
     }
 }
