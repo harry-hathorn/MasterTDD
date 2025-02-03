@@ -7,7 +7,7 @@ namespace MasterTDD.Day5
         [Fact]
         public void MoveOneLeft() {
             var rover = MarsRover.Create('N', 5, 5);
-            rover.Move("l");
+            rover.Move('l');
 
             rover.PositionY.Should().Be(4);
         }
@@ -16,7 +16,7 @@ namespace MasterTDD.Day5
         public void MoveOneRight()
         {
             var rover = MarsRover.Create('N', 5, 5);
-            rover.Move("r");
+            rover.Move('r');
 
             rover.PositionY.Should().Be(6);
         }

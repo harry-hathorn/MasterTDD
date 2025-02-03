@@ -38,7 +38,7 @@
             return new MarsRover(direction, positionX, positionY);
         }
 
-        public void Move(string commands)
+        public void Move(params char[] commands)
         {
             foreach (char command in commands)
             {
