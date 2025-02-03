@@ -1,9 +1,12 @@
-﻿using Xunit.Sdk;
-
-namespace MasterTDD.Day5
+﻿namespace MasterTDD.Day5
 {
     internal class MarsRover
     {
+        private const int MaxPositionX = 20;
+        private const int MinPositionX = 0;
+        private const int MaxPositionY = 10;
+        private const int MinPositionY = 0;
+
         private MarsRover(char direction, int positionX, int positionY)
         {
             Direction = direction;
@@ -24,7 +27,7 @@ namespace MasterTDD.Day5
             {
                 throw new ArgumentException($"Position cannot be '{direction}'");
             }
-            if (positionX > 20 || positionX < 0 || positionY > 10 || positionY < 0)
+            if (positionX > MaxPositionX || positionX < MinPositionX || positionY > MaxPositionY || positionY < MinPositionY)
             {
                 throw new ArgumentException($"Position '{positionX},{positionY}' is out of bounds");
             }
