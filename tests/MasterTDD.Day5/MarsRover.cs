@@ -50,6 +50,7 @@
                 else if (command == 'r')
                 {
                     PositionX += 1;
+                    Direction = East;
                 }
                 else if (command == 'f')
                 {

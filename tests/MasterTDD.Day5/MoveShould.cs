@@ -19,6 +19,7 @@ namespace MasterTDD.Day5
             rover.Move('r');
 
             rover.PositionX.Should().Be(6);
+            rover.Direction.Should().Be('E');
         }
 
         [Fact]
