@@ -1,4 +1,6 @@
-﻿namespace MasterTDD.Day5
+﻿using Xunit.Sdk;
+
+namespace MasterTDD.Day5
 {
     internal class MarsRover
     {
@@ -42,25 +44,26 @@
         {
             foreach (char command in commands)
             {
-                if (command == 'l')
+                switch (command)
                 {
-                    PositionX -= 1;
-                    Direction = West;
-                }
-                else if (command == 'r')
-                {
-                    PositionX += 1;
-                    Direction = East;
-                }
-                else if (command == 'f')
-                {
-                    PositionY += 1;
-                    Direction = North;
-                }
-                else if (command == 'b')
-                {
-                    PositionY -= 1;
-                    Direction = South;
+                    case 'l':
+                        PositionX -= 1;
+                        Direction = West;
+                        break;
+                    case 'r':
+                        PositionX += 1;
+                        Direction = East;
+                        break;
+                    case 'f':
+                        PositionY += 1;
+                        Direction = North;
+                        break;
+                    case 'b':
+                        PositionY -= 1;
+                        Direction = South;
+                        break;
+                    default:
+                        break;
                 }
             }
         }
