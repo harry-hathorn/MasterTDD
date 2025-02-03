@@ -1,6 +1,4 @@
-﻿using Xunit.Sdk;
-
-namespace MasterTDD.Day5
+﻿namespace MasterTDD.Day5
 {
     internal class MarsRover
     {
