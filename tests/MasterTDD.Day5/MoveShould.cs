@@ -10,6 +10,7 @@ namespace MasterTDD.Day5
         {
             { new RoverPosition('N', 5, 5), "l", new RoverPosition('W', 4, 5) },
             { new RoverPosition('N', 5, 5), "r", new RoverPosition('E', 6, 5) },
+            { new RoverPosition('S', 5, 5), "f", new RoverPosition('N', 5, 6) },
         };
 
         [Theory]
@@ -23,14 +24,7 @@ namespace MasterTDD.Day5
             rover.Direction.Should().Be(endingPosition.Direction);
         }
 
-        [Fact]
-        public void MoveOneUp()
-        {
-            var rover = MarsRover.Create('S', 5, 5);
-            rover.Move('f');
-            rover.PositionY.Should().Be(6);
-            rover.Direction.Should().Be('N');
-        }
+
 
         [Fact]
         public void MoveOneDown()
