@@ -15,10 +15,19 @@ namespace MasterTDD.Day6
         }
 
         [Fact]
-        public void ReturnTrue_WhenRandomNumberIsOdd() {
+        public void ReturnTrue_WhenRandomNumberIsOdd()
+        {
             _randomGeneratorMock.Setup(x => x.GetRandomBetween1And100()).Returns(1);
             var isOdd = _oddOrEvenDetector.IsRandomNumberOdd();
             Assert.True(isOdd);
+        }
+
+        [Fact]
+        public void ReturnFalse_WhenRandomNumberIsEven()
+        {
+            _randomGeneratorMock.Setup(x => x.GetRandomBetween1And100()).Returns(2);
+            var isOdd = _oddOrEvenDetector.IsRandomNumberOdd();
+            Assert.False(isOdd);
         }
     }
 }
