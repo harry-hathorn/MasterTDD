@@ -1,4 +1,4 @@
-﻿namespace MasterTDD.Day6
+﻿namespace MasterTDD.Day6.Application
 {
     public interface IRandomGenerator
     {

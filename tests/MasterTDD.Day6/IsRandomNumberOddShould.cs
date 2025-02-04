@@ -1,11 +1,11 @@
 ﻿using FluentAssertions;
+using MasterTDD.Day6.Application;
 using Moq;
 
 namespace MasterTDD.Day6
 {
     public class IsRandomNumberOddShould
     {
-
         private readonly Mock<IRandomGenerator> _randomGeneratorMock;
         private readonly OddOrEvenDetector _oddOrEvenDetector;
 
