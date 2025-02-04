@@ -1,4 +1,5 @@
-﻿using Moq;
+﻿using FluentAssertions;
+using Moq;
 
 namespace MasterTDD.Day6
 {
@@ -20,20 +21,23 @@ namespace MasterTDD.Day6
             _randomGeneratorMock.Verify(x => x.GetRandomBetween1And100(), Times.Once);
         }
 
-        [Fact]
-        public void ReturnTrue_WhenRandomNumberIsOdd()
-        {
-            _randomGeneratorMock.Setup(x => x.GetRandomBetween1And100()).Returns(1);
-            var isOdd = _oddOrEvenDetector.IsRandomNumberOdd();
-            Assert.True(isOdd);
-        }
-
-        [Fact]
-        public void ReturnFalse_WhenRandomNumberIsEven()
-        {
-            _randomGeneratorMock.Setup(x => x.GetRandomBetween1And100()).Returns(2);
-            var isOdd = _oddOrEvenDetector.IsRandomNumberOdd();
-            Assert.False(isOdd);
+        [Theory]
+        [InlineData(1, true)]
+        [InlineData(11, true)]
+        [InlineData(13, true)]
+        [InlineData(72881, true)]
+        [InlineData(-1, true)]
+        [InlineData(2, false)]
+        [InlineData(10, false)]
+        [InlineData(12, false)]
+        [InlineData(991886, false)]
+        [InlineData(0, false)]
+        [InlineData(-1000000, false)]
+        public void ReturnCorrectResult(int randomNumber, bool isOdd) {
+            _randomGeneratorMock.Setup(x => x.GetRandomBetween1And100())
+                .Returns(randomNumber);
+            var result = _oddOrEvenDetector.IsRandomNumberOdd();
+            result.Should().Be(isOdd);
         }
     }
 }
