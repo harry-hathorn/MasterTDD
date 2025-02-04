@@ -15,6 +15,12 @@ namespace MasterTDD.Day6
         }
 
         [Fact]
+        public void CallGetRandomBetween1And100() {
+            _oddOrEvenDetector.IsRandomNumberOdd();
+            _randomGeneratorMock.Verify(x => x.GetRandomBetween1And100(), Times.Once);
+        }
+
+        [Fact]
         public void ReturnTrue_WhenRandomNumberIsOdd()
         {
             _randomGeneratorMock.Setup(x => x.GetRandomBetween1And100()).Returns(1);
