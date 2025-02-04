@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterTDD.Day4", "tests\Mas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterTDD.Day5", "tests\MasterTDD.Day5\MasterTDD.Day5.csproj", "{80286854-065F-47A9-8AC9-E3F26381F3F0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterTDD.Day6", "tests\MasterTDD.Day6\MasterTDD.Day6.csproj", "{9BAF3846-6035-4657-B027-3A9F86208B18}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{80286854-065F-47A9-8AC9-E3F26381F3F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80286854-065F-47A9-8AC9-E3F26381F3F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80286854-065F-47A9-8AC9-E3F26381F3F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BAF3846-6035-4657-B027-3A9F86208B18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BAF3846-6035-4657-B027-3A9F86208B18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BAF3846-6035-4657-B027-3A9F86208B18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BAF3846-6035-4657-B027-3A9F86208B18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
